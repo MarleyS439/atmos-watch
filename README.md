@@ -20,7 +20,7 @@ pip install -r requeriments.txt
 Caso você esteja em um ambiente Linux, é recomendável usar um ambiente virtual python:
 ```
 # Cria a venv
-python -m venv ~/atmos-venv
+python3 -m venv ~/atmos-venv
 
 # Ativa a venv
 source ~/atmos-venv/bin/activate
