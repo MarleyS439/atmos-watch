@@ -87,3 +87,6 @@ def captura(componente, frequencia, plataforma):
 
             # Aguarda para realizar o loop novamente
             time.sleep(frequencia)
+
+    elif componente == '-r':
+        print("\n" + Fore.BLUE + f"Leitura de CPU a cada {frequencia}s iniciada" + Style.RESET_ALL + "\n")
