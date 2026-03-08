@@ -64,9 +64,26 @@ def captura(componente, frequencia, plataforma):
             # Objeto de frequência da CPU do psutil
             cpu_freq = psutil.cpu_freq()
 
+            # Objeto de percentual de uso da CPU do psutil
+            cpu_percentual = psutil.cpu_percent(interval=frequencia)
+
             # Data e hora
             data_hora = time.strftime('%d-%m-%Y %H:%M:%S')
 
             # Dicionário de leitura
-            leitura = {'data_hora': data_hora, 'freq_atual': cpu_freq.current, 'freq_min': cpu_freq.min, 'freq_max': cpu_freq.max}
+            leitura = {'data_hora': data_hora, 'freq_atual': cpu_freq.current, 'freq_min': cpu_freq.min, 'freq_max': cpu_freq.max, 'percentual': cpu_percentual}
 
+            # Nome do arquivo de saída
+            arquivo = 'dados_cpu.csv'
+
+            # Cabeçalho
+            cabecalho = ['data_hora', 'freq_atual', 'freq_min', 'freq_max', 'percentual']
+
+            # Salva os dados de leitura
+            salvar(arquivo, cabecalho, leitura)
+
+            # Mostra no terminal a leitura
+            print(f"{data_hora} | Uso: {cpu_percentual}% | Freq. atual: {cpu_freq.current :.2f} Mhz | Freq. mínima: {cpu_freq.min :.2f} Mhz | Freq. min: {cpu_freq.min :.2f} Mhz")
+
+            # Aguarda para realizar o loop novamente
+            time.sleep(frequencia)
