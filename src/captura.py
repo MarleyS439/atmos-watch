@@ -106,7 +106,7 @@ def captura(componente, frequencia, plataforma):
             data_hora = time.strftime('%d-%m-%Y %H:%M:%S')
 
             # Dicionário de leitura
-            leitura = {'data_hora': data_hora, 'total': ram.total, 'livre': ram.free, 'percentual': ram.percent, 'cache': ram.cache}
+            leitura = {'data_hora': data_hora, 'total': ram.total, 'livre': ram.free, 'percentual': ram.percent, 'cache': ram.cached}
 
             # Nome do arquivo de saída
             arquivo = 'dados_ram.csv'
