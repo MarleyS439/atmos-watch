@@ -33,7 +33,7 @@ sed -i '1i #!/usr/bin/env python3' atmos
 # Permissão de execução
 chmod +x atmos
 
-# Cria link simbólico no PATH (corrigido)
+# Cria link simbólico no PATH 
 ln -sf ~/.local/bin/atmos-watch/atmos ~/.local/bin/atmos
 
 echo "---"
