@@ -4,7 +4,7 @@
 cd ..
 
 # Compacta o projeto
-zip -r atmos.zip Atmos
+zip -r atmos.zip atmos-watch
 
 # Garante que o diretório existe
 mkdir -p ~/.local/bin
@@ -22,7 +22,7 @@ unzip atmos.zip
 rm atmos.zip
 
 # Entra na pasta do projeto
-cd Atmos
+cd atmos-watch
 
 # Cria o executável
 cp main.py atmos
