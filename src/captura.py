@@ -1,0 +1,72 @@
+import sys
+
+import psutil, time
+from colorama import Fore, Style
+
+# Importa o arquivo de script de salvar dados
+from src.salvar import salvar
+
+# Captura os dados com base num componente e numa frequência
+def captura(componente, frequencia, plataforma):
+    """
+    Faz a captura de dados de um componente de hardware da máquina
+
+    Args:
+        componente (str): O nome do componente.
+        frequencia (int): O valor da frequência.
+    """
+
+    # Valida o tipo de componente a ser capturado os dados
+    if componente == '-d':
+        print("\n" + Fore.BLUE + f"Leitura de disco a cada {frequencia}s iniciada" + Style.RESET_ALL + "\n")
+
+        # Atribui o tipo correto de partição root do sistema (Windows 'C:\\' e Linux: '/')
+        if plataforma == "Linux":
+            root = '/'
+        elif plataforma == "Windows":
+            root = 'C:\\'
+        else:
+            print("Plataforma não suportada")
+            sys.exit()
+
+        # Loop
+        while True:
+            # Objeto de disco do psutil
+            disco = psutil.disk_usage(root)
+
+            # Data e hora atual formatada
+            data_hora = time.strftime('%d-%m-%Y %H:%M:%S')
+
+            razao = (1 / (1024 ** 3))
+
+            # Dicionário de leitura
+            leitura = {'data_hora': data_hora, 'total': disco.total, 'livre': disco.free, 'percentual': disco.percent}
+
+            # Nome do arquivo de saída
+            arquivo = 'dados_disco.csv'
+
+            # Cabeçalho
+            cabecalho = ['data_hora', 'total', 'livre', 'percentual']
+
+            # Salva os dados de leitura
+            salvar(arquivo, cabecalho, leitura)
+
+            # Mostra no terminal a leitura
+            print(f"{data_hora} | Total: {(disco.total * razao):.2f} GB | Livre: {(disco.free * razao):.2f} GB | Percentual: {disco.percent}%")
+
+            # Aguarda para realizar o loop novamente
+            time.sleep(frequencia)
+    elif componente == '-c':
+        print("\n" + Fore.BLUE + f"Leitura de CPU a cada {frequencia}s iniciada" + Style.RESET_ALL + "\n")
+
+        # Loop
+        while True:
+            # Objeto de frequência da CPU do psutil
+            cpu_freq = psutil.cpu_freq()
+
+            # Data e hora
+            data_hora = time.strftime('%d-%m-%Y %H:%M:%S')
+
+            # Dicionário de leitura
+            leitura = {'data_hora': data_hora, 'freq_atual': cpu_freq.current, 'freq_min': cpu_freq.min, 'freq_max': cpu_freq.max}
+
