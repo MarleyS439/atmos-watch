@@ -60,7 +60,7 @@ if componente not in componentes_validos:
     print(Fore.RED + "\nErro: Componente inválido!" + Style.RESET_ALL)
     sys.exit(1)
 
-# Verifica se
+# Verifica se foi passado a frequência em segundos de captura
 if len(argumentos) > 2:
     frequencia = float(argumentos[2])
 
