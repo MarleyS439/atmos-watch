@@ -1,5 +1,4 @@
 import sys
-from calendar import day_abbr
 
 import psutil, time
 from colorama import Fore, Style
@@ -54,7 +53,7 @@ def captura(componente, frequencia, plataforma):
             salvar(arquivo, cabecalho, leitura)
 
             # Mostra no terminal a leitura
-            print(f"{data_hora} | Total: {(disco.total * razao):.2f} GB | Livre: {(disco.free * razao):.2f} GB | Percentual: {disco.percent}%")
+            print(f"{data_hora} | Total: {(disco.total * razao):.2f} GiB | Livre: {(disco.free * razao):.2f} GiB | Percentual: {disco.percent}%")
 
             # Aguarda para realizar o loop novamente
             time.sleep(frequencia)

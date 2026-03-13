@@ -44,7 +44,7 @@ FREQ_PADRAO = 5
 # Verifica quantidade correta de argumentos
 if len(argumentos) > 3:
     print(Fore.RED + "\nUso incorreto!" + Style.RESET_ALL)
-    print("\nUso:", Fore.YELLOW + "python3 captura.py [comando] [frequência]" + Style.RESET_ALL)
+    print("\nUso:", Fore.YELLOW + "python3 main.py [componente] [frequência]" + Style.RESET_ALL)
     print("\nComandos disponíveis:")
     print("  -c   CPU")
     print("  -d   Disco")
