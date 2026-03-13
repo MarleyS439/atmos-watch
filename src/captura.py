@@ -85,7 +85,7 @@ def captura(componente, frequencia, plataforma):
             salvar(arquivo, cabecalho, leitura)
 
             # Mostra no terminal a leitura
-            print(f"{data_hora} | Uso: {cpu_percentual}% | Freq. atual: {cpu_freq.current :.2f} Mhz | Freq. mínima: {cpu_freq.min :.2f} Mhz | Freq. min: {cpu_freq.min :.2f} Mhz")
+            print(f"{data_hora} | Uso: {cpu_percentual}% | Freq. atual: {cpu_freq.current :.2f} Mhz | Freq. mínima: {cpu_freq.min :.2f} Mhz | Freq. max: {cpu_freq.max :.2f} Mhz")
 
             # Aguarda para realizar o loop novamente
             time.sleep(frequencia)
